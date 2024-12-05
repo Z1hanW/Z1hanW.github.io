@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Few-shot Detection w/o Fine-tuning for Autonomous Exploration">
+
+        content="Efficient Few-Shot Detection for Autonomous Exploration">
   <meta name="keywords" content="Few-shot detection, Online, Robotic exploration">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AirDet</title>
@@ -79,16 +80,15 @@
   </div>
 </nav>
 
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title"><img src="./static/images/drone.svg" width="120">AirDet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
-          <h1 class="title is-2 publication-title">Few-shot Detection w/o Fine-tuning for Autonomous Exploration</h1>
+          <h1 class="title is-1 publication-title"><img src="./static/images/drone.svg" width="120">AirShot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+          <h1 class="title is-2 publication-title">Efficient Few-Shot Detection for Autonomous Exploration</h1>
           <div class="column is-full_width">
-            <h2 class="title is-3">ECCV 2022</h2>
+            <h2 class="title is-3">IROS 2024</h2>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -214,18 +214,38 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Few-shot object detection has attracted increasing attention and rapidly progressed in recent years. However, the requirement of an exhaustive offline fine-tuning stage in existing methods is time-consuming and significantly hinders their usage in online applications such as autonomous exploration of low-power robots.
+            Few-shot object detection has drawn increasing
+attention in the field of robotic exploration, where robots are
+required to find unseen objects with a few online provided
+examples. Despite recent efforts have been made to yield online
+processing capabilities, slow inference speeds of low-powered
+robots fail to meet the demands of real-time detection-making
+them impractical for autonomous exploration. 
           </p>
           <p>
-            We find that their major limitation is that the little but valuable information from a few support images is not fully exploited.
+            Existing methods
+still face performance and efficiency challenges, mainly due to
+unreliable features and exhaustive class loops.
           </p>
           <p>
-            To solve this problem, we propose a brand new architecture, AirDet, and surprisingly find that, by learning <i>class-agnostic relation</i> with the support images in all modules, including cross-scale object proposal network, shots aggregation module, and localization network, AirDet without fine-tuning achieves comparable or even better results than many fine-tuned methods, reaching up to <b>30-40%</b> improvements.
-            We also present solid results of onboard tests on real-world exploration data from the DARPA Subterranean Challenge, which strongly validate the feasibility of AirDet in robotics.
+            In this work, we
+            propose a new paradigm AirShot, and discover that, by fully
+            exploiting the valuable correlation map, AirShot can result in a
+            more robust and faster few-shot object detection system, which
+            is more applicable to robotics community. The core module Top
+            Prediction Filter (TPF) can operate on multi-scale correlation
+            maps in both the training and inference stages. During training, TPF supervises the generation of a more representative
+            correlation map, while during inference, it reduces looping
+            iterations by selecting top-ranked classes, thus cutting down on
+            computational costs with better performance. Surprisingly, this
+            dual functionality exhibits general effectiveness and efficiency
+            on various off-the-shelf models. 
           </p>
           <p>
-            To the best of our knowledge, AirDet is the first feasible few-shot detection method for autonomous exploration of low-power robots.
-            The code and pre-trained models are also released.
+            Exhaustive experiments on
+            COCO2017, VOC2014, and SubT datasets demonstrate that
+            TPF can significantly boost the efficacy and efficiency of most
+            off-the-shelf models, achieving up to 36.4% precision improvements along with 56.3% faster inference speed. Pre-trained model, Code and Data are also released. 
           </p>
         </div>
       </div>
@@ -363,7 +383,7 @@
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
     <h2 class="title">Acknowledgements</h2>
-    The work was done when Bowen Li and Pranay Reddy were interns at The Robotics Institute, CMU. The authors would like to thank all members of the Team Explorer for providing data collected from the DARPA Subterranean Challenge. Our code is built upon <a href="https://github.com/fanq15/FewX">FewX</a>, for which we sincerely express our gratitute to the authors.
+    The work was done when Zihan Wang was interns at AirLab in Robotics Institute, CMU. The authors would like to thank all members of the Team Explorer for providing data collected from the DARPA Subterranean Challenge. Our code is built upon <a href="https://github.com/fanq15/FewX">FewX</a>, for which we sincerely express our gratitute to the authors.
   </div>
 </section>
 
