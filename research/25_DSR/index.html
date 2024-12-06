@@ -237,25 +237,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Detecting unseen instances based on multi-view templates is a challenging problem due to its open-world nature. 
-            Traditional methodologies, which primarily rely on 2D representations and matching techniques, are often inadequate in handling <b>pose variations and occlusions</b>.
+            We address the problem of <b>dynamic scene reconstruction from sparse-view videos.</b> Prior work often requires <b>dense multi-view captures using dozens of calibrated cameras</b> (e.g. Panoptic Studio), or <b>short monocular videos with limited information</b> (e.g. DAVIS). In contrast, we aim to reconstruct diverse dynamic human behaviors, such as repairing a bike or dancing from sparse-view videos. 
           </p>
           <p>
-            To solve this, we introduce VoxDet, a pioneer 3D geometry-aware framework that fully utilizes the strong <b>3D voxel representation</b> and reliable <b>voxel matching</b> mechanism. 
-            VoxDet first ingeniously proposes template voxel aggregation (TVA) module, effectively transforming multi-view 2D images into 3D voxel features. By leveraging associated camera poses, these features are aggregated into a compact 3D template voxel. 
-            In novel instance detection, this voxel representation demonstrates heightened resilience to occlusion and pose variations. 
-            We also discover that a 3D reconstruction objective helps to pre-train the 2D-3D mapping in TVA. 
+            We repurpose state-of-the-art monocular reconstruction methods for <b>sparse-view reconstruction</b> and find that <b>careful initialization from time- and view-consistent monocular depth estimators</b> produces more accurate reconstructions. 
+            Specifically, our method predicts dense surface points across all training views, and uses confidence-aware pixel alignment to initialize scene geometry. 
+            We further distill per-point semantic features from 2D foundation models, and use <b> feature clustering</b> to encode a compact set of motion bases. 
+            Finally, we employ a gradient-based joint optimization framework to simultaneously learn scene geometry and motion. 
           </p>
           <p>
-            Second, to quickly align with the template voxel, VoxDet incorporates a Query Voxel Matching (QVM) module. The 2D queries are first converted into their voxel representation with the learned 2D-3D mapping. We find that since the 3D voxel representations encode the geometry, we can first estimate the relative rotation and then compare the aligned voxels, leading to improved accuracy and efficiency.
-          </p>
-          <p>
-            In addition to method, we also introduce <b>first instance detection benchmark, RoboTools</b>, where 20 unique instances are video-recorded with camera extrinsic.
-            RoboTools also provides 24 challenging cluttered scenarios with more than 9k box annotations.
-          </p>
-          <p>
-            Exhaustive experiments are conducted on the demanding LineMod-Occlusion, YCB-video, and RoboTools benchmarks, where VoxDet outperforms various 2D baselines remarkably with faster speed. 
-            To the best of our knowledge, VoxDet is the first to incorporate implicit 3D knowledge for 2D novel instance detection tasks.
+            Notably, our approach achieves <b>state-of-the-art performance</b> on challenging sequences from the Ego-Exo4D dataset.
           </p>
         </div>
       </div>
@@ -367,7 +358,7 @@
 <section class="section" >
   <div class="container is-max-desktop content">
     <h1 class="title">BibTeX</h1>
-    yet to come, I will send your email to ask for citation (just kidding). 
+    yet to come, I will send you email to ask for citation (just kidding). 
   </div>
 </section>
 
@@ -375,7 +366,7 @@
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
     <h1 class="title">Acknowledgements</h1>
-    We thank ourselves for surviving. 
+    We thank ourselves for surviving. We also extend our gratitude to Zihan for his generous payment of tuition fees to Carnegie Mellon University, which made this possible.
   </div>
 </section>
 
