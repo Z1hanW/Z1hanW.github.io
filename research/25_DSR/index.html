@@ -277,56 +277,25 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Method. -->
+    <!-- Method Section -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-full_width">
+      <div class="column is-full-width">
         <hr>
         <h2 class="title is-3">Method</h2>
         <br>
         <h3 class="title is-4">Method Overview</h3>
         <div class="content has-text-justified">
-          <img src="static\images\Structure.png" class="center"/>
-          <p>VoxDet consists of 3 main modules:
-            <li>As dynamic scene reconstruction from sparse views is extremely challenging, we present two key insights to initialize plausible geometry and motion:
-            <li>initializing consistent scene geometry via confidence-aware spatio-temporal alignment</li>
-            <li>initializing motion trajectories by clustering per-point 3D semantic features distilled from 2D foundation models</li>
-          </p>
+          <img src="static/images/method.png" alt="Structure" class="center" />
+          <p>VoxDet consists of three main modules:</p>
+          <ul>
+            <li>As dynamic scene reconstruction from sparse views is extremely challenging, we present two key insights to initialize plausible geometry and motion:</li>
+            <ul>
+              <li>Initializing consistent scene geometry via confidence-aware spatio-temporal alignment</li>
+              <li>Initializing motion trajectories by clustering per-point 3D semantic features distilled from 2D foundation models</li>
+            </ul>
+          </ul>
         </div>
-
     
-    <h3 class="title is-4">Comparison with benchmark</h3>
-    <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
-        <source src="./static/images/Comp_Gen6d.mp4" type="video/mp4">
-    </video>
-    <h2 class="subtitle has-text-centered">
-      Gen6D falls short when the instance is in unseen poses or occluded.
-    </h2>
-
-    <p>
-      &nbsp
-    </p>
-    <h3 class="title is-4">Ablation in Design</h3>
-    <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
-        <source src="./static/images/Comp_DTOID.mp4" type="video/mp4">
-    </video>
-    <h2 class="subtitle has-text-centered">
-      DTOID can't handel complex backgrounds very well.
-    </h2>
-
-    <p>
-      &nbsp
-    </p>
-    <h3 class="title is-4">Ablation in Depth</h3>
-    <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
-        <source src="./static/images/Comp_OLN.mp4" type="video/mp4">
-    </video>
-    </div>
-    <h2 class="subtitle has-text-centered">
-      OLN_DINO has trouble distinguishing instances that have similar semantics.
-    </h2>
-  </div>
-</section>
-
 
 
 <section class="section" >
