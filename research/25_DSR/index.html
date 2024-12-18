@@ -22,7 +22,7 @@
 
     gtag('config', 'G-PYVRSFMDRL');
   </script> -->
-  <link rel="icon" type="image/png" href="./static/images/airlab.png"> 
+  <link rel="icon" type="image/png" href="./static/images/ri.png"> 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/airlab.png">
+  <link rel="icon" href="./static/images/ri.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -293,6 +293,81 @@
         </div>
     
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <hr>
+        <h2 class="title is-3">Experiments</h2>
+        <br>
+        <div class="content has-text-justified">
+          <h4>Concrete steps to validate our points:</h4>
+          <ul>
+              <li>
+                  <strong>Perfect training views</strong> 
+                  <span>(prove correct implementation)</span>
+              </li>
+              <li>
+                  <strong>Perfect near-novel (5&deg;) view synthesis</strong> 
+                  <span>(illustrate that the method works, like other approaches)</span>
+              </li>
+              <li>
+                  <strong>Great extreme-novel (45&deg;) view synthesis</strong> 
+                  <span>(demonstrate free-viewpoint rendering, no one did it before)</span>
+              </li>
+              <li>
+                  <strong>Held-out camera evaluation (90&deg;)</strong> 
+                  <span>(use 3 out of 4 cameras for training and leave 1 out for qualitative results)</span>
+              </li>
+          </ul>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-full-width">
+              <h3>Selected Qualitative Results</h3>
+
+          
+              <div class="content has-text-justified">
+                <h5>Novel View Synthesis Comparison</h5>
+                <img src="static/images/result0.jpg" alt="Structure" class="center" />
+                <p>
+                  In each <strong>2×3</strong> block, we visualize the rasterized RGB image, depth map, and foreground mask from each
+                  method for the dancing (top) and bike repair (bottom) sequences. We show <strong>45°</strong> (left) and <strong>90°</strong> (right) 
+                  novel view synthesis results.
+              </p>
+              <p>
+                  Existing monocular methods and their extension to multi-view produce poor results rendered from a drastically different novel view.
+                  <strong>MV-SOM</strong> improves upon SOM in both <strong>45°</strong> novel-view synthesis and <strong>90°</strong> novel-view synthesis. 
+                  Our method’s careful point cloud initialization and feature-based motion bases further improve on MV-SOM. 
+              </p>
+              <p>
+                  Note that <strong>Dynamic 3DGS</strong> does not separate foreground and background, so we report a black foreground mask.
+              </p>
+                  </ul>
+                </ul>
+
+
+                <h5>Novel View Synthesis Results of Our Method</h5>
+                <div class="content has-text-justified">
+                  <img src="static/images/result1.jpg" alt="Structure" class="center" />
+                    <p>
+                        Results from more video sequences. In each row, we visualize the rasterized RGB image, depth map,
+                        and foreground mask from our method for various diverse scenes, including music (top), cooking (middle), and healthcare (bottom).
+                    </p>
+                    <p>
+                        We include results for <strong>5°</strong> (left) and <strong>45°</strong> (right) novel view synthesis results. Notably, the rendered 
+                        RGB and depth maps produce consistent reconstructions and plausible geometry.
+                    </p>
+                <h5>More Results and Ablation Study</h5>
+                <p>
+                  For more details, please check out <a href="https://drive.google.com/file/d/10XsArUhlpraBpuiVFpCH1TOwCm5C-dgy/view" target="_blank">our paper</a>.
+              </p>
+                
+                </div>
+                
+
+
+        </div>
 
 <section class="section" >
   <div class="container is-max-desktop content">
