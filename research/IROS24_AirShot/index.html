@@ -304,18 +304,23 @@ unreliable features and exhaustive class loops.
       <div class="column is-four-fifths">
         <h2 class="title is-3">Contribution</h2>
         <div class="content has-text-justified">
-          <li>
-            We propose the first feasible model, AirDet, for robotic exploration, which enables few-shot detection <b>w/o</b> fine-tuning.
-          </li>
-          <li>
-            We propose "<b>class-agnostic relation</b>", including spatial relation and channel relation, which are basic building blocks of AirDet.
-          </li>
-          <li>
-            Exhaustive experiments on COCO, Pascal VOC, LVIS datasets, and <b>DARPA SubT</b> tests validate the feasibility and superiority of AirDet.
-          </li>
-          <li>
-            We also provide <b>ROS wrapper</b> of AirDet for the robotics community.
-          </li>
+          <ul>
+            <li>
+                We proposed a new model <strong>AirShot</strong> that fully exploits the valuable knowledge in the correlation map. 
+                Its core module <strong>TPF</strong>, a plug-and-play design, also works generally for various FSOD models [1], [8]. 
+                The efficiency and effectiveness brought by TPF offer substantial advancements in robot autonomous exploration tasks.
+            </li>
+            <li>
+                We comprehensively tested <strong>AirShot</strong> across two widely used datasets, <strong>MS-COCO</strong> and <strong>Pascal VOC</strong>. 
+                AirShot yields a <strong>36.4%</strong> performance improvement and a <strong>56.28%</strong> reduction in computational costs, 
+                demonstrating a new state-of-the-art (SOTA) in the field of FSOD that requires no fine-tuning.
+            </li>
+            <li>
+                To demonstrate its effectiveness for real-world environments, we also tested our system with a challenging FSOD dataset 
+                collected from the <strong>DARPA Subterranean (SubT) Challenge</strong> by our team.
+            </li>
+        </ul>
+        
         </div>
       </div>
     </div>
@@ -336,10 +341,12 @@ unreliable features and exhaustive class loops.
           <h2 class="is-size-6 has-text-centered">(The left are our improved pipeline and right is the results among fine-tuning free models)</h2>
           <br>  
           <p>
-            The pipeline of the autonomous exploration task and the framework of <strong>AirDet</strong>. 
+            The pipeline of the autonomous exploration task and the framework of <strong>AirShot</strong>. 
+            During exploration, a few prior raw images that potentially contain novel objects (helmet) are sent to a human user first. Provided with <em>online</em> annotated few-shot data, the robot explorer is able to detect those objects by observing its surrounding environment.
           </p>
           <p>
-            During exploration, a few prior raw images that potentially contain novel objects (helmet) are sent to a human user first. Provided with <em>online</em> annotated few-shot data, the robot explorer is able to detect those objects by observing its surrounding environment.
+            AirShot first needs offline data for base training, where Top Prediction Filter <strong>(TPF)</strong> learns to infer the existence directly from correlation map. During exploration, the inference is applied only to the top predictions filtered by TPF(from 20 to N&lt;5), 
+            enabling a lightweight inference strategy with few precision drop.
           </p>
           </p>
         </div>
