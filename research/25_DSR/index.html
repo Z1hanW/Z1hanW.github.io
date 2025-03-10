@@ -85,7 +85,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <img src="./static/images/tteaser.svg" width="300">
-          <h1 class="title is-2 publication-title">Why is Sparse-View 4D Reconstruction Hard?</h1>
+          <h1 class="title is-2 publication-title">MonoFusion: Sparse-View 4D Reconstruction via Monocular Fusion</h1>
           <div class="column is-full_width">
             <h2 class="title is-3">in submission</h2>
           </div>
@@ -182,12 +182,20 @@
       </h2>
     </div>
 
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Method Section -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width">
+            <hr> 
+            <h2 class="title is-3"> 4D Scene Reconstruction that Supports Free-View Synthesis</h2>
+            <br>
     <h2 class="subtitle has-text-centered">
-      We show results in diverse scene such as bike repair, healthcare(CPR) and dancing! 
+      We show comprehensive results that cover all categories of egoexo4D! Even those complex, highly-occuluded scene. (We omit the training view for better visualization experience later)
     </h2>
-    <h1> 
-      Complex, High occluded scene: Bike Repair
-    </h1>
+    <h4 class="subtitle has-text-centered">
+      Bike Repair
+    </h4>
     <div class="hero-body">
       <div style="text-align:center;">
         <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
@@ -195,17 +203,90 @@
       </video>
       </div>
 
+      <section class="section">
+        <div class="container is-max-desktop">
+          <!-- Method Section -->
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-full-width">
+              <hr>
+              <h2 class="title is-3">EgoView Synthesis (Follow the Dance!)</h2>
+              <br>
+              <div style="display: flex; justify-content: center; align-items: center;">
+                <!-- First video -->
+                <video id="teaser1" autoplay muted loop style="width: 45%; margin-right: 10px;">
+                  <source src="./static/images/output_video.mov" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+          
+                <!-- Second video -->
+                <video id="teaser2" autoplay muted loop style="width: 45%;">
+                  <source src="./static/images/synthesis.mov" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              
+              <div class="content has-text-justified">
+                <p>
+                  With 4 camera set-up, we can enable egoview synthesis at anywhere in the scene, boosting possible embodied applications! [Left: gt provided by EgoExo4D, Right: our synthesised view] (Different colour is led by different camera sensors, foreground in our reconstruction has been removed)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <section class="section">
+            <div class="container is-max-desktop">
+              <!-- Method Section -->
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                  <hr>
+                  <h2 class="title is-3">More Results!</h2>
+                  <br>
+      <h4 class="subtitle has-text-centered">
+        HealthCare - CPR
+      </h4>
       <div style="text-align:center;">
         <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
-          <source src="./static/images/csr.mov" type="video/mp4">
+          <source src="./static/images/csR2.mov" type="video/mp4">
+      </video>
+      </div>
+      <h4 class="subtitle has-text-centered">
+       Music - Piano
+      </h4>
+      <div style="text-align:center;">
+        <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+          <source src="./static/images/piano.mov" type="video/mp4">
+      </video>
+      </div>
+      <h4 class="subtitle has-text-centered">
+        Cooking - Scrumble Egg
+       </h4>
+      <div style="text-align:center;">
+        <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+          <source src="./static/images/cookk.mov" type="video/mp4">
       </video>
       </div>
 
+      <h4 class="subtitle has-text-centered">
+        Sports - Football
+       </h4>
+
       <div style="text-align:center;">
         <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
-          <source src="./static/images/dance.mov" type="video/mp4">
+          <source src="./static/images/football.mov" type="video/mp4">
       </video>
       </div>
+      <h4 class="subtitle has-text-centered">
+        Panoptic - Baseball
+       </h4>
+      <div style="text-align:center;">
+        <video id="teaser1" autoplay muted loop style="flex: 50%; max-width: 100%;">
+          <source src="./static/images/panoptic.mov" type="video/mp4">
+      </video>
+      </div>
+
+
+
+
       <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
       <br>
     </div>
@@ -328,43 +409,18 @@
 
           
               <div class="content has-text-justified">
-                <h5>Novel View Synthesis Comparison</h5>
-                <img src="static/images/result0.jpg" alt="Structure" class="center" />
-                <p>
-                  In each <strong>2×3</strong> block, we visualize the rasterized RGB image, depth map, and foreground mask from each
-                  method for the dancing (top) and bike repair (bottom) sequences. We show <strong>45°</strong> (left) and <strong>90°</strong> (right) 
-                  novel view synthesis results.
-              </p>
+                <h5><strong>45°</strong>  Novel View Synthesis Comparison</h5>
+                <img src="static/images/qs.png" alt="Structure" class="center" />
               <p>
                   Existing monocular methods and their extension to multi-view produce poor results rendered from a drastically different novel view.
-                  <strong>MV-SOM</strong> improves upon SOM in both <strong>45°</strong> novel-view synthesis and <strong>90°</strong> novel-view synthesis. 
-                  Our method’s careful point cloud initialization and feature-based motion bases further improve on MV-SOM. 
-              </p>
-              <p>
-                  Note that <strong>Dynamic 3DGS</strong> does not separate foreground and background, so we report a black foreground mask.
+                  <strong>MV-SOM</strong> improves upon SOM in <strong>45°</strong> novel-view synthesis. 
+                  Our method's careful point cloud initialization and feature-based motion bases further improve on MV-SOM. 
               </p>
                   </ul>
                 </ul>
 
 
-                <h5>Novel View Synthesis Results of Our Method</h5>
-                <div class="content has-text-justified">
-                  <img src="static/images/result1.jpg" alt="Structure" class="center" />
-                    <p>
-                        Results from more video sequences. In each row, we visualize the rasterized RGB image, depth map,
-                        and foreground mask from our method for various diverse scenes, including music (top), cooking (middle), and healthcare (bottom).
-                    </p>
-                    <p>
-                        We include results for <strong>5°</strong> (left) and <strong>45°</strong> (right) novel view synthesis results. Notably, the rendered 
-                        RGB and depth maps produce consistent reconstructions and plausible geometry.
-                    </p>
-                <h5>More Results and Ablation Study</h5>
-                <p>
-                  For more details, please check out <a href="https://drive.google.com/file/d/10XsArUhlpraBpuiVFpCH1TOwCm5C-dgy/view" target="_blank">our paper</a>.
-              </p>
-                
-                </div>
-                
+
 
 
         </div>
