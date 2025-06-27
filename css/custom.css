@@ -1,0 +1,22 @@
+/* static/css/custom.css */
+
+/* 1-A  Widen every .container on large screens           */
+/*     (keeps Bootstrap break-points & mobile friendliness) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;   /* try 1600 px if you have a 4K monitor */
+    width: 90%;          /* keeps a little margin on the sides   */
+  }
+}
+
+/* static/css/custom.css  (append below the width rule) */
+
+/* 2-A  Venue badge style */
+.badge-venue {
+  font-weight: 700;
+  background: #fff2e6;   /* pale background so text pops */
+  color: #d14;           /* a CMU-red-ish tone */
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
