@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="CRISP: Contact-guided Real2Sim from Monocular Video with Planar Scene Primitives">
+  <meta name="keywords" content="Human Scene Interaction, 4D Human Motion Reconstruction, Physics-Based Simulation for Control">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    CRISP: Contact-guided Real2Sim from Monocular Video with Planar Scene Primitives
+  </title>
+
+  <link rel="icon" type="image/svg" href="./static/images/logo.svg" />
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <script>
+    function updateMethodVideo() {
+        const task = document.getElementById("single-menu-task").value;
+        const robot = task.split("_")[0];
+
+        const video_ours = document.getElementById("result-video-ours");
+        const video_ppo = document.getElementById("result-video-ppo");
+        const video_hb = document.getElementById("result-video-hb");
+        const video_seq = document.getElementById("result-video-seq");
+        const video_mcp = document.getElementById("result-video-mcp");
+        const video_humanplus = document.getElementById("result-video-humanplus");
+        video_ours.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_ours.mp4";
+        video_ppo.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_ppo.mp4";
+        video_hb.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_hb.mp4";
+        video_seq.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_seq.mp4";
+        video_mcp.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_mcp.mp4";
+        video_humanplus.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_humanplus.mp4";
+
+        if (robot != "H1") {
+          document.getElementById("result-video-second-row").style.display = "none";
+          document.getElementById("result-video-third-row").style.display = "none";
+        } else {
+          document.getElementById("result-video-second-row").style.display = "";
+          document.getElementById("result-video-third-row").style.display = "";
+        }
+        if (task == "H1_FarReach") {
+          video_hb.style.display = "none";
+          video_seq.getElementsByTagName("video")[0].style.width = "45%";
+          const br = document.createElement("br");
+          document.getElementById("result-video-second-row").appendChild(br);
+        } else {
+          video_hb.style.display = "";
+          video_seq.getElementsByTagName("video")[0].style.width = "90%";
+        }
+    }
+
+    function onLoadFunction() {
+      updateMethodVideo();
+    }
+</script>
+
+<style>
+  .scene-block {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .scene-block .columns {
+    flex-grow: 1;
+    align-items: center;
+  }
+</style>
+
+</head>
+
+
+<body onload="onLoadFunction();">
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src="./static/videos/demo_video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="is-hidden-tablet"
+    style="display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; background-color: black; left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);">
+    <video playsinline autoplay muted loop style="width: 90%; height: auto; min-height: 100%;">
+      <source src="./static/videos/1514_1758228692.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+    </header>
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 12rem;">
+        CRISP
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-3-mobile" style="font-size: 4rem;">
+        Contact-guided Real2Sim from Monocular Video with Planar Scene Primitives
+      </h1>
+      <div class="column has-text-centered is-hidden-tablet">
+        <div class="publication-links">
+          <span class="link-block">
+            <a href="" class="external-link button is-normal is-rounded is-dark paper-link">
+              <span class="icon">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="" class="external-link button is-normal is-rounded is-dark arxiv-link">
+              <span class="icon">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="#video" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href=""
+              class="external-link button is-normal is-rounded is-dark github-link">
+              <span class="icon">
+                <img src="./static/images/github-mark-white.svg" alt="GitHub" />
+              </span>
+              <span>Code</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth is-size-5">
+      <ul>
+        <li><a href="#video">Video Results</a></li>
+        <li><a href="#compare">Baseline Comparisons</a></li>
+        <li><a href="#contact">Contact/Non-Contact Comparisons</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
+<section class="section is-small" id="video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-3-mobile">Video Results</h2>
+    <br><br>
+
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: MPH11</h2>
+      <br>
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/video_results/MPH11.mp4" width=350
+                  style="border-radius:10px; "></video>
+            <figcaption>Input Video</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/video_results/ours_MPH11.mp4" width=350
+                  style="border-radius:10px; "></video>
+            <figcaption>CRISP(ours)</figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: outdoor stairs up</h2>
+      <br>
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/video_results/outdoor_stairs_up.mp4" width=350
+                  style="border-radius:10px; "></video>
+            <figcaption>Input Video</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/video_results/ours_outdoor_stairs_up.mp4" width=350
+                  style="border-radius:10px; "></video>
+            <figcaption>CRISP(ours)</figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+    
+        <div class="scene-block">
+          <h2 class="title is-3 is-size-4-mobile">Scene: outdoor walk</h2>
+          <div class="columns is-centered is-variable is-6">
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/outdoor_walk.mp4"></video>
+                <figcaption>Input Video</figcaption>
+              </figure>
+            </div>
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/ours_outdoor_walk.mp4"></video>
+                <figcaption>CRISP(ours)</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+    
+        <div class="scene-block">
+          <h2 class="title is-3 is-size-4-mobile">Scene: Basement Sitting Booth</h2>
+          <div class="columns is-centered is-variable is-6">
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/Basement_input.mp4"></video>
+                <figcaption>Input Video</figcaption>
+              </figure>
+            </div>
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/Basement_output.mp4"></video>
+                <figcaption>CRISP(ours)</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+    
+        <div class="scene-block">
+          <h2 class="title is-3 is-size-4-mobile">Scene: indoor walk</h2>
+          <div class="columns is-centered is-variable is-6">
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/40_indoor_input.mp4"></video>
+                <figcaption>Input Video</figcaption>
+              </figure>
+            </div>
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/40_indoor_output.mp4"></video>
+                <figcaption>CRISP(ours)</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+    
+    
+        <div class="scene-block">
+          <h2 class="title is-3 is-size-4-mobile">Scene: Handstand</h2>
+          <div class="columns is-centered is-variable is-6">
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/68_outdoor_handstand.mp4"></video>
+                <figcaption>Input Video</figcaption>
+              </figure>
+            </div>
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/handstand_output.mp4"></video>
+                <figcaption>CRISP(ours)</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+    
+        <div class="scene-block">
+          <h2 class="title is-3 is-size-4-mobile">Scene: N3_OpenLibrary</h2>
+          <div class="columns is-centered is-variable is-6">
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/N3_input.mp4"></video>
+                <figcaption>Input Video</figcaption>
+              </figure>
+            </div>
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/N3_output.mp4"></video>
+                <figcaption>CRISP(ours)</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+    
+        <div class="scene-block">
+          <h2 class="title is-3 is-size-4-mobile">Scene: N3OpenArea</h2>
+          <div class="columns is-centered is-variable is-6">
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/N3OpenArea_input.mp4"></video>
+                <figcaption>Input Video</figcaption>
+              </figure>
+            </div>
+            <div class="column is-narrow has-text-centered">
+              <figure>
+                <video autoplay muted loop playsinline controls width="350" src="static/videos/video_results/N3OpenArea_output.mp4"></video>
+                <figcaption>CRISP(ours)</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    
+
+<section class="section is-small" id="compare">
+  <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-3-mobile">Baseline Comparisons</h2> 
+    
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: indoor walk off mvs</h2>
+      <br>
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/indoor_walk_off_mvs.mp4" width="250"
+                  style="border-radius:10px;"></video>
+            <figcaption>Input Video</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/ours_indoor_walk_off_mvs.mp4" width="250"
+                  style="border-radius:10px;"></video>
+            <figcaption>CRISP(Ours)</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/vmm_indoor_walk_off_mvs.mp4" width="250"
+                  style="border-radius:10px; "></video>
+            <figcaption>VideoMimic</figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: MPH8</h2>
+      <br>
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/MPH8.mp4" width="250"
+                  style="border-radius:10px; "></video>
+            <figcaption>Input Video</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/ours_MPH8.mp4" width="250"
+                  style="border-radius:10px; "></video>
+            <figcaption>CRISP(Ours)</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/vmm_MPH8.mp4" width="250"
+                  style="border-radius:10px; "></video>
+            <figcaption>VideoMimic</figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: outdoor long walk</h2>
+      <br>
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/outdoor_long_walk.mp4" width="250"
+                  style="border-radius:10px; "></video>
+            <figcaption>Input Video</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/ours_outdoor_long_walk.mp4" width=250
+                  style="border-radius:10px; "></video>
+            <figcaption>CRISP(Ours)</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/vmm_outdoor_long_walk.mp4" width=250
+                  style="border-radius:10px; "></video>
+            <figcaption>VideoMimic</figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: outdoor stairs up down</h2>
+      <br>
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/outdoor_stairs_up_down.mp4" width=250
+                  style="border-radius:10px; "></video>
+            <figcaption>Input Video</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered" style="margin-right: 80px;">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/ours_outdoor_stairs_up_down.mp4" width=250
+                  style="border-radius:10px; "></video>
+            <figcaption>CRISP(Ours)</figcaption>
+            </figure>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/baseline_comparisions/vmm_outdoor_stairs_up_down.mp4" width=250
+                  style="border-radius:10px; "></video>
+            <figcaption>VideoMimic</figcaption>
+            </figure>
+          </div>
+      </div>
+    </div>
+  
+  </div>
+</section>
+
+
+<section class="section is-small" id="contact">
+  <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-3-mobile">Contact/Non-Contact Comparisons</h2>
+
+    
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: pkr_c1</h2>
+      <br>
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/contact/pkr_gg.mp4" width="250" style="border-radius:10px;"></video>
+            <figcaption>Input</figcaption>
+          </figure>
+        </div>
+        <div class="column has-text-centered">
+          <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/contact/contact_pkr_c1.mp4" width="250" style="border-radius:10px;"></video>
+            <figcaption>Contact</figcaption>
+          </figure>
+        </div>
+        <div class="column has-text-centered">
+          <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/contact/non-contact_pkr_c1.mp4" width="250" style="border-radius:10px;"></video>
+            <figcaption>Non-Contact</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="scene-block">
+      <h2 class="title is-3 is-size-4-mobile">Scene: pkr_c</h2>
+      <br>
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/contact/pkr_cc.mp4" width="250" style="border-radius:10px;"></video>
+            <figcaption>Input</figcaption>
+          </figure>
+        </div>
+        <div class="column has-text-centered">
+          <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/contact/contact_pkr_c.mp4" width="250" style="border-radius:10px;"></video>
+            <figcaption>Contact</figcaption>
+          </figure>
+        </div>
+        <div class="column has-text-centered">
+          <figure>
+            <video autoplay muted loop playsinline controls src="static/videos/contact/non-contact_pkr_c.mp4" width="250" style="border-radius:10px;"></video>
+            <figcaption>Non-Contact</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+
+</html>
