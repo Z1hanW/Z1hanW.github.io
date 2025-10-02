@@ -64,13 +64,13 @@
 }
 
 a {
-  color: #3D8D7A;
+  color: #357F74;
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: #3D8D7A;
+  color: #357F74;
   text-decoration: none;
 }
 
@@ -100,8 +100,8 @@ heading {
   /*color: #313164;*/
   text-decoration: underline;
   text-decoration-style: solid;
-  -webkit-text-decoration-color: #97413a;
-  text-decoration-color: #97413a; /* #ac715b; */
+  -webkit-text-decoration-color: #357F74;
+  text-decoration-color: #357F74;
 }
 
 papertitle {
@@ -153,7 +153,7 @@ span.badge {
 }
 
 .author-me {
-  color: #3D8D7A;
+  color: #2F6F64;
   font-weight: 600;
 }
 
@@ -166,5 +166,5 @@ span.badge {
 
 .author-other:hover,
 .author-other:focus {
-  color: #3D8D7A;
+  color: #357F74;
 }
