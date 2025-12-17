@@ -172,3 +172,12 @@ span.badge {
 a.pub-link {
   font-weight: 500;
 }
+
+.profile-photo {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
