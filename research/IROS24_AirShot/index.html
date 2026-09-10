@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-
-        content="Efficient Few-Shot Detection for Autonomous Exploration">
+  <meta name="description" content="AirShot uses a Top Prediction Filter on correlation maps for efficient few-shot object detection in robotic exploration, without novel-class fine-tuning at deployment.">
   <meta name="keywords" content="Few-shot detection, Online, Robotic exploration">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AirDet</title>
+  <title>AirShot: Efficient Few-Shot Detection for Autonomous Exploration</title>
 
   <link rel="icon" type="image/png" href="./static/images/airlab.png"> 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -27,6 +25,17 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+<meta name="citation_title" content="AirShot: Efficient Few-Shot Detection for Autonomous Exploration">
+<meta name="citation_author" content="Zihan Wang">
+<meta name="citation_author" content="Bowen Li">
+<meta name="citation_author" content="Chen Wang">
+<meta name="citation_author" content="Sebastian Scherer">
+<meta name="citation_publication_date" content="2024">
+<meta name="citation_conference_title" content="2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)">
+<meta name="citation_firstpage" content="11654">
+<meta name="citation_lastpage" content="11661">
+<meta name="citation_doi" content="10.1109/IROS58592.2024.10801738">
+<link rel="canonical" href="https://z1hanw.github.io/research/IROS24_AirShot/">
 </head>
 <body>
 
@@ -40,7 +49,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://imnotprepared.github.io/#Publications">
+      <a class="navbar-item" href="https://z1hanw.github.io/#selected-publications">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
@@ -51,10 +60,10 @@
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://imnotprepared.github.io/research/25_DSR">
-            4D Scene Recon - (in submission)
+          <a class="navbar-item" href="https://z1hanw.github.io/research/25_DSR">
+            MonoFusion - ICCV 2025
           </a>
-          <a class="navbar-item" href="https://imnotprepared.github.io/research/IROS24_AirShot">
+          <a class="navbar-item" href="https://z1hanw.github.io/research/IROS24_AirShot">
             AirShot - IROS 2024
           </a>
         </div>
@@ -77,14 +86,14 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               
-              <a href="https://imnotprepared.github.io/">Zihan Wang</a><sup>1,2</sup>,</span>
+              <a href="https://z1hanw.github.io/">Zihan Wang</a><sup>1,2</sup>,</span>
             <span class="author-block">
               <a href="https://jaraxxus-me.github.io/">Bowen Li</a><sup>2</sup>,</span>
             <span class="author-block">
               <a href="https://sairlab.org/team/chen/">Chen Wang</a><sup>2,3</sup>,
             </span>
             <span class="author-block">
-              <a href="http://theairlab.org/team/sebastian/">Sebastian Scherer</a><sup>2</sup>
+              <a href="https://theairlab.org/team/sebastian/">Sebastian Scherer</a><sup>2</sup>
             </span>
 
           </div>
@@ -103,7 +112,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2404.05069"
+                <a href="https://doi.org/10.1109/IROS58592.2024.10801738"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -121,7 +130,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/ImNotPrepared/AirShot"
+                <a href="https://github.com/Z1hanW/AirShot"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -131,21 +140,12 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/ImNotPrepared/AirShot"
+                <a href="https://drive.google.com/drive/folders/1KoFmW8W2biI3FOEREe57tKVmYa6yupCW?usp=sharing"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
                   <span>Data</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/ImNotPrepared/AirShot"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-robot"></i>
-                  </span>
-                  <span>ROS</span>
                 </a>
               </span>
             </div>
@@ -156,6 +156,8 @@
     </div>
   </div>
 </section>
+
+<section class="section research-overview" aria-label="Research overview"><div class="container is-max-desktop"><div class="research-summary"><h2 class="summary-heading">Overview</h2><p><strong>AirShot detects novel objects from a few annotated support images without novel-class fine-tuning at deployment.</strong> Its Top Prediction Filter (TPF) learns from query-support correlation maps and selects likely classes to reduce class-wise inference loops. The method is evaluated on COCO, Pascal VOC and the DARPA SubT setting. Offline base training is required, and the class-selection setting controls the accuracy-latency tradeoff.</p></div></div></section>
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
@@ -219,6 +221,17 @@
   </div>
 </section>
 
+<section class="section" id="evaluation-and-scope"><div class="container is-max-desktop"><div class="research-details">
+  <h3>Accuracy and inference time</h3>
+  <p>TPF has two roles: it supervises correlation-map learning during offline training and filters candidate classes during inference. The no-fine-tuning claim applies to deployment on novel classes after base training.</p>
+  <div class="research-table-wrap"><table class="research-table">
+    <caption>Inference time in the paper's Top-10 experiment (Table IV)</caption>
+    <thead><tr><th scope="col">Setting</th><th scope="col">Reported time</th></tr></thead>
+    <tbody><tr><th scope="row">Full-loop base</th><td>0.733 s</td></tr><tr><th scope="row">COCO, TPF + Top 10</th><td>0.392 s</td></tr><tr><th scope="row">VOC, TPF + Top 10</th><td>0.386 s</td></tr></tbody>
+  </table></div>
+  <p class="source-note">Source: <a href="https://arxiv.org/html/2404.05069v1#S4.T4">Table IV and Section IV-D</a>. These are measured inference times under the paper's experimental setup, which reports four NVIDIA A100 GPUs for training and evaluation. They are not FLOP counts or Jetson latency measurements. The separate SubT demonstration uses an NVIDIA Jetson AGX Xavier. Top-10 filtering has a measured accuracy tradeoff; see the original table for shot-specific results.</p>
+  <p><strong>Scope and limitations.</strong> AirShot is intended for example-based novel-object detection in robot exploration. Filtering gains depend on the number of candidate classes and the quality of the correlation maps; benefits diminish when most candidate classes occur in a query image. The original abstract below retains the paper's wording; the table above states the measured timing quantities directly.</p>
+</div></div></section>
 <section class="section">
   <div class="container is-max-desktop">
         <!-- Paper video. -->
@@ -237,7 +250,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3">Original paper abstract</h2>
         <div class="content has-text-justified">
           <p>
             Few-shot object detection has drawn increasing
@@ -296,8 +309,7 @@ unreliable features and exhaustive class loops.
             </li>
             <li>
                 We comprehensively tested <strong>AirShot</strong> across two widely used datasets, <strong>MS-COCO</strong> and <strong>Pascal VOC</strong>. 
-                AirShot yields a <strong>36.4%</strong> performance improvement and a <strong>56.28%</strong> reduction in computational costs, 
-                demonstrating a new state-of-the-art (SOTA) in the field of FSOD that requires no fine-tuning.
+                Tables II and III report detection accuracy under full-loop inference; Table IV reports the accuracy and timing tradeoff under Top-10 class filtering. These are distinct experimental settings.
             </li>
             <li>
                 To demonstrate its effectiveness for real-world environments, we also tested our system with a challenging FSOD dataset 
@@ -320,7 +332,7 @@ unreliable features and exhaustive class loops.
         <hr>
         <h2 class="title is-3">Method</h2>
         <br>
-        <img src="static\images\method0.jpg" class="center"/>
+        <img src="static/images/method0.jpg" class="center"/>
         <div class="content has-text-justified">
           <h2 class="is-size-6 has-text-centered">(The left are our improved pipeline and right is the results among fine-tuning free models)</h2>
           <br>  
@@ -341,7 +353,7 @@ unreliable features and exhaustive class loops.
     <section class="hero teaser">
       <div class="container is-max-desktop">
         <div class="hero-body">
-          <img src="static\images\method1.jpg" class="center"/>
+          <img src="static/images/method1.jpg" class="center"/>
           <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
           <br><br><br>        
         </div>
@@ -360,7 +372,7 @@ unreliable features and exhaustive class loops.
     </p>
     <h3 class="title is-4">3-shot Detection in SubT Challenge</h3>
     <div class="column is-full_width">
-      <img src="static\images\subt.svg" class="center"/>
+      <img src="static/images/subt.svg" class="center"/>
       <div class="content has-text-justified">
         <br>  
         <p>
@@ -386,12 +398,14 @@ unreliable features and exhaustive class loops.
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{wang2024airshot,
-      title = {{AirShot}: Efficient Few-Shot Detection for Autonomous Exploration},
-      author = {Wang, Zihan and Li, Bowen and Wang, Chen and Scherer, Sebastian},
-      booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-      year = {2024},
-      url = {https://arxiv.org/pdf/2404.05069.pdf}
-    }</code></pre>
+  title={AirShot: Efficient few-shot detection for autonomous exploration},
+  author={Wang, Zihan and Li, Bowen and Wang, Chen and Scherer, Sebastian},
+  booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={11654--11661},
+  year={2024},
+  organization={IEEE}
+}</code></pre>
+      <p><a href="citation.bib" download>Download BibTeX</a></p>
   </div>
 </section>
 
