@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-
-        content="Why is Sparse-View 4D Reconstruction Hard?">
+  <meta name="description" content="MonoFusion reconstructs dynamic 4D scenes from sparse-view videos, using four static cameras and aligned monocular priors for novel-view synthesis.">
   <meta name="keywords" content="4D Dynamics Scene Reconstruction, Free-view Synthesis, Sparse View">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>4D Recon</title>
+  <title>MonoFusion: Sparse-View 4D Reconstruction via Monocular Fusion</title>
 
   <link rel="icon" type="image/png" href="./static/images/ri.png"> 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -27,6 +25,18 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+<meta name="citation_title" content="MonoFusion: Sparse-View 4D Reconstruction via Monocular Fusion">
+<meta name="citation_author" content="Zihan Wang">
+<meta name="citation_author" content="Jeff Tan">
+<meta name="citation_author" content="Tarasha Khurana">
+<meta name="citation_author" content="Neehar Peri">
+<meta name="citation_author" content="Deva Ramanan">
+<meta name="citation_publication_date" content="2025">
+<meta name="citation_conference_title" content="2025 IEEE/CVF International Conference on Computer Vision (ICCV)">
+<meta name="citation_firstpage" content="8252">
+<meta name="citation_lastpage" content="8263">
+<meta name="citation_doi" content="10.1109/ICCV51701.2025.00773">
+<link rel="canonical" href="https://z1hanw.github.io/research/25_DSR/">
 </head>
 <body>
 
@@ -40,7 +50,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://imnotprepared.github.io/#Publications">
+      <a class="navbar-item" href="https://z1hanw.github.io/#selected-publications">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
@@ -51,10 +61,10 @@
           More Research
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://imnotprepared.github.io/research/25_DSR">
-            4D Scene Recon - in submission
+          <a class="navbar-item" href="https://z1hanw.github.io/research/25_DSR">
+            MonoFusion - ICCV 2025
           </a>
-          <a class="navbar-item" href="https://imnotprepared.github.io/research/IROS24_AirShot">
+          <a class="navbar-item" href="https://z1hanw.github.io/research/IROS24_AirShot">
             AirShot - IROS 2024
           </a>
         </div>
@@ -75,22 +85,22 @@
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://imnotprepared.github.io/">Zihan Wang</a>,</span>
+              <a href="https://z1hanw.github.io/">Zihan Wang</a>,</span>
             <span class="author-block">
               <a href="https://jefftan969.github.io/">Jeff Tan</a>,</span>
             <span class="author-block">
-              <a href="https://www.cs.cmu.edu/~tkhurana/">Tarasha Khurana</a>,
+              <a href="https://www.cs.cmu.edu/~tkhurana/">Tarasha Khurana*</a>,
             </span>
             <span class="author-block">
-              <a href="https://www.neeharperi.com/">Neehar Peri</a>,
+              <a href="https://www.neeharperi.com/">Neehar Peri*</a>,
             </span>
             <span class="author-block">
-              <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan*</a>
+              <a href="https://www.cs.cmu.edu/~deva/">Deva Ramanan</a>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Carnegie Mellon University
+            <span class="author-block">Carnegie Mellon University</span><br><span class="is-size-6">* Equal contribution.</span>
           </div>
 
           <div class="column has-text-centered">
@@ -107,7 +117,7 @@
               </span>              
               <!-- Video Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="#project-demos"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -117,7 +127,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/ImNotPrepared/MonoFusion"
+                <a href="https://github.com/Z1hanW/MonoFusion"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -144,11 +154,13 @@
   </div>
 </section>
 
-<section class="hero teaser">
+<section class="section research-overview" aria-label="Research overview"><div class="container is-max-desktop"><div class="research-summary"><h2 class="summary-heading">Overview</h2><p><strong>MonoFusion reconstructs dynamic 4D scenes from sparse-view videos captured by four static cameras.</strong> It aligns monocular geometry and motion estimates across views and time, using depth priors and semantic features to initialize reconstruction. The paper evaluates novel-view synthesis on Panoptic Studio and ExoRecon, a subset of Ego-Exo4D. The input is synchronized multi-camera video with known camera parameters; monocular fusion describes the reconstruction strategy.</p></div></div></section>
+
+<section class="hero teaser" id="project-demos">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div style="text-align:center;">
-        <img src="static\images\teaser.png" style="width:100%; height:auto;">
+        <img src="static/images/teaser.png" style="width:100%; height:auto;">
       </div>
       <!-- <img class="rounded" src="./media/nice-slam/teaser.png" > -->
       <br>
@@ -166,7 +178,7 @@
             <h2 class="title is-3"> 4D Scene Reconstruction that Supports Free-View Synthesis</h2>
             <br>
     <h2 class="subtitle has-text-centered">
-      We show comprehensive results that cover all categories of EgoExo4D! Even those complex, highly-occuluded scene. (We omit the training view for better visualization experience later)
+      Examples from ExoRecon, a curated six-scene subset of Ego-Exo4D covering diverse human activities. Training views are omitted from the displays below.
     </h2>
     <h4 class="subtitle has-text-centered">
       Bike Repair
@@ -288,19 +300,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            We address the problem of <b>dynamic scene reconstruction from sparse-view videos.</b> Prior work often requires <b>dense multi-view captures using dozens of calibrated cameras</b> (e.g. Panoptic Studio), or <b>short monocular videos with limited information</b> (e.g. DAVIS). In contrast, we aim to reconstruct diverse dynamic human behaviors, such as repairing a bike or dancing from sparse-view videos. 
-          </p>
-          <p>
-            We repurpose state-of-the-art monocular reconstruction methods for <b>sparse-view reconstruction</b> and find that <b>careful initialization from time- and view-consistent monocular depth estimators</b> produces more accurate reconstructions. 
-            Specifically, our method predicts dense surface points across all training views, and uses confidence-aware pixel alignment to initialize scene geometry. 
-            We further distill per-point semantic features from 2D foundation models, and use <b> feature clustering</b> to encode a compact set of motion bases. 
-            Finally, we employ a gradient-based joint optimization framework to simultaneously learn scene geometry and motion. 
-          </p>
-          <p>
-            Notably, our approach achieves <b>state-of-the-art performance</b> on challenging sequences from the Ego-Exo4D dataset.
-          </p>
+        <div class="content has-text-justified"><p>We address the problem of dynamic scene reconstruction from sparse-view videos. Prior work often requires dense multi-view captures with hundreds of calibrated cameras (e.g. Panoptic Studio) - such multi-view setups are prohibitively expensive to build and cannot capture diverse scenes in-the-wild. In contrast, we aim to reconstruct dynamic human behaviors, such as repairing a bike or dancing, from a small set of sparse-view cameras with complete scene coverage (e.g. four equidistant inward-facing static cameras). We find that dense multi-view reconstruction methods struggle to adapt to this sparse-view setup due to limited overlap between viewpoints. To address these limitations, we carefully align independent monocular reconstructions of each camera to produce time- and view-consistent dynamic scene reconstructions. Extensive experiments on PanopticStudio and Ego-Exo4D demonstrate that our method achieves higher quality reconstructions than prior art, particularly when rendering novel views.</p>
         </div>
       </div>
     </div>
@@ -406,15 +406,19 @@
 
         </div>
 
+<div class="container is-max-desktop research-details" id="evaluation-and-scope"><h3>Input and evaluation scope</h3><p>The experiments use synchronized sparse-view videos with known camera parameters. The primary setup uses four static cameras; a separate held-out-camera setting trains on three views. Evaluation includes eight Panoptic Studio scenes and six ExoRecon scenes, with near-view and 45-degree novel-view comparisons. See <a href="https://arxiv.org/html/2507.23782v1#S4">Section 4</a> for the exact split, baselines and metrics.</p><p><strong>Limitations.</strong> Reconstruction depends on foreground masks and monocular priors. Missed body parts and long occlusions can cause mask or tracking failures. See the paper's limitations discussion.</p></div>
 <section class="section" >
   <div class="container is-max-desktop content">
     <h1 class="title">BibTeX</h1>
-    @inproceedings{wang2025monofusion,
-      title={MonoFusion: Sparse-View 4D Reconstruction via Monocular Fusion},
-      author={Wang, Zihan and Tan, Jeff and Khurana, Tarasha and Peri, Neehar and Ramanan, Deva},
-      booktitle={ICCV},
-      year={2025}
-  }
+    <pre><code>@inproceedings{wang2025monofusion,
+  title={Monofusion: Sparse-view 4d reconstruction via monocular fusion},
+  author={Wang, Zihan and Tan, Jeff and Khurana, Tarasha and Peri, Neehar and Ramanan, Deva},
+  booktitle={2025 IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages={8252--8263},
+  year={2025},
+  organization={IEEE}
+}</code></pre>
+      <p><a href="citation.bib" download>Download BibTeX</a></p>
   </div>
 </section>
 
