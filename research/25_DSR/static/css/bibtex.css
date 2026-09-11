@@ -5,11 +5,11 @@
   border-radius: 0;
   padding: 0;
   background: none;
-  color: #1772d0;
+  color: #3273dc;
   font: inherit;
   cursor: pointer;
 }
-.bibtex-toggle:hover { color: #f09228; }
+.bibtex-toggle:hover { color: #363636; }
 .bibtex-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 pre.bibtex-code {
   margin: 1rem 0;
