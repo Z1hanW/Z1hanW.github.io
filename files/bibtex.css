@@ -1,0 +1,27 @@
+/* Compact, inline BibTeX disclosure. */
+.bibtex-toggle {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: none;
+  color: #1772d0;
+  font: inherit;
+  cursor: pointer;
+}
+.bibtex-toggle:hover { color: #f09228; }
+.bibtex-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+pre.bibtex-code {
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #333;
+  font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.bibtex-code code { padding: 0; background: transparent; color: inherit; font: inherit; }
+.bibtex-code[hidden] { display: none; }
+.bibtex-actions { text-align: left; font-size: 0.95rem; }
