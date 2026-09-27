@@ -183,6 +183,17 @@ a.pub-link {
   line-height: 0;
 }
 
+.prism-copy,
+.publication-list td > p {
+  max-width: 620px;
+}
+
+#prism .author-me,
+#prism .author-other,
+.prism-copy .keep-together {
+  white-space: nowrap;
+}
+
 .profile-photo {
   width: 100%;
   max-width: 320px;
